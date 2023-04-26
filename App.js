@@ -1,20 +1,52 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+// IMPORT THE NEEDED PAGES
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import FourTwentyExpress from './pages/fourTwentyExpress';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// CREATE THE STACK
+const Stack = createStackNavigator();
+
+function App() {
+  <NavigationContainer>
+    <Stack.Navigator initialRouteName='HomePage'>
+      {/** The Home page  */}
+      <Stack.Screen 
+        name='HomePage'
+        component={HomePage}
+        options={
+          {
+            title: "HomePage",
+            
+          }
+        }/>
+      {/** The Login page  */}
+      <Stack.Screen 
+        name='LoginPage'
+        component={LoginPage}
+        options={
+          {
+            title: "LoginPage",
+            
+          }
+        }/>
+      {/** four twenty express  */}
+      <Stack.Screen 
+        name='FourTwentyExpress'
+        component={FourTwentyExpress}
+        options={
+          {
+            title: "FourTwentyExpress",
+            
+          }
+        }/>
+      {/** MajorKill minis  */}
+    </Stack.Navigator>
+  </NavigationContainer>
+}//end app function
+
+export default App;
+
